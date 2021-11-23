@@ -6,7 +6,7 @@
 # Builds Kernel Script
 
 # Run log script as background process & grab process ID of vcgencmd script
-./unix_a2/vcgencmd &> ./kernel_build_temp_data & tempPID=$!
+./unix_a2/vcgencmd &> ./kernel_data.dat & tempPID=$!
 
 # Run led flicker and grab its Process ID
 ./unix_a2/led_flicker & ledPID=$!
