@@ -1,0 +1,52 @@
+#!/bin/bash
+# RMIT CPT264 - UNIX Systems Administration and Programming Assignment 2 build_kernel
+# Author : Mirolsav Petkovic
+# Email : s3666906@student.rmit.edu.au
+# Pi Version : 4
+# Builds vcgencmd Script for performance monitoring
+
+# Temperature Script for cpu during build_kernel operation
+echo "Build_kernel, is running. Logging CPU temperature"
+
+# add Seconds variable
+start=$SECONDS
+
+# printf tab formatting
+printf "%s\t%s\t%s\t%s\t%s\n" "Time(Sec)" "CPU Temp(degC)" "GPU Temp(degC)" "CPU Usage(%)" "Memory Usage(GB)" 
+printf "%10s\n" "....................................................................................."
+
+# While loop for logging
+while true
+do
+# Get CPU and GPU Temperatures and assign to variable. egrep removes "'C"
+cpu_temp=$(</sys/class/thermal/thermal_zone0/temp)
+cpu_temp=$((cpu_temp/1000))
+
+gpu_temp=$(vcgencmd measure_temp | grep -Eo '[0-9]*\.[0-9]*')
+
+# Get CPU usage
+cpu_usage=$[100-$(vmstat 1 2|tail -1|awk '{print $15}')]
+
+# Get Memory usage, uses free command and extracts used column to display mem usage
+mem_usage=$(free -m | grep ^Mem | tr -s ' '| cut -d ' ' -f 3)
+mem_usage=$((mem_usage/100))
+
+
+# Renaming long command to "time". "%s" adjusts time to epoch
+duration=$(( SECONDS - start))
+printf "%s\t\t%s\t\t%s\t\t%s\t\t%.2f\n" "$duration" "$cpu_temp" "$gpu_temp" "$cpu_usage" "$mem_usage"
+sleep 1
+
+done
+
+### References
+
+# Michael Kerrisk. 2018. "free(1) ?? Linux manual page".[online] Available at: https://man7.org/linux/man-pages/man1/free.1.html. [Accessed 20 November 2021].
+
+# elinux.org. 2019. "RPI vcgencmd usage". <https://elinux.org/RPI_vcgencmd_usage>. [Accessed 20 November 2021].
+
+# Stack Exchange Inc (User "Jeulis"). 2018. "Extracting %CPU usage from VMSTAT in a file". [online] Available at: <https://stackoverflow.com/questions/26906828/extracting-cpu-usage-from-vmstat-in-a-file> [Accessed 21 November 2021].
+
+# Unix & Linux Stack Exchange (User: 0x80). 2013. "Get separate used memory info from free -m command". [online] Available at: <https://unix.stackexchange.com/questions/68526/get-separate-used-memory-info-from-free-m-command> [Accessed 20 November 2021].
+
+# Vivek Gite. 2021. "How to find out Raspberry Pi GPU and ARM CPU temperature on Linux". [online] Available at: <https://www.cyberciti.biz/faq/linux-find-out-raspberry-pi-gpu-and-arm-cpu-temperature-command/ [Accessed 20 November 2021].
