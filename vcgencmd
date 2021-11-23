@@ -10,10 +10,6 @@ CPU_MEASURE_INTERVAL_SECONDS=1
 SLEEP=/bin/sleep
 
 # Checks and deletes OUTPUT_FILE if already exists before process starts
-cleanup(){
-	exit 0
-}
-
 if [ $# -eq 1 ] ; then
 	OUTPUT_FILE=$1
 fi
@@ -21,9 +17,6 @@ fi
 if [[ -e $OUTPUT_FILE ]] ; then
 	rm -f "$OUTPUT_FILE"
 fi
-
-trap cleanup USR1
-
 
 # Temperature Script for cpu during build_kernel operation
 echo "Build_kernel, is running. Logging Pi stats"
