@@ -1,3 +1,66 @@
 #!/bin/bash
+# RMIT CPT264 - UNIX Systems Administration and Programming - Assignment 2 
+# Author : Miroslav Petkovic
+# Email : s3666906@student.rmit.edu.au
+# Pi Version : 4
+# Builds Kernel Script
 
-## Miroslav Petkovic-s3666906 ##
+# Run log script as background process & grab process ID of vcgencmd script
+./unix_a2/vcgencmd &> ./kernel_data.dat & tempPID=$!
+
+# Run led flicker and grab its Process ID
+./unix_a2/led_flicker & ledPID=$!
+
+# function to kill pid for use in trap
+killUSR1(){
+kill -15 $tempPID
+exit
+}
+
+killUSR2(){
+kill -15 $ledPID
+exit
+}
+
+# Event handling of USR1&2 signals
+trap "killUSR1" USR1
+trap "killUSR2" USR2
+
+# Get Updates
+sudo apt-get update
+
+# Install binaries required
+sudo apt install raspberrypi-kernel-headers build-essential bc git wget bison flex libssl-dev make
+
+# Repo with linux kernel to clone
+git clone --depth=1 https://github.com/raspberrypi/linux
+
+# Kernel Version
+KERNEL=kernel7l
+
+# Kernel starts make process 
+# Event handler for USR1 to stop gracefully after "make" has finished ***
+sudo make -j4 zImage modules dtbs
+
+# Installl modules
+sudo make modules_install
+
+# Backup old boot files
+sudo cp -r /boot/. ./boot_backup
+
+#Compress boot back up file
+sudo tar -zcvf ./boot_backup.tar.gz ./boot_backup
+sudo rm -rf ./boot_backup
+
+# Copy final files to required destinations
+sudo cp arch/arm/boot/dts/*.dtb /boot/
+sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
+sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
+sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
+
+#Kill Process of vcgencmd temperature log and led flicker
+kill -15 $tempPID
+kill -15 $ledPID
+
+# Reboots sytem to enable changes
+sudo reboot
