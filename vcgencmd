@@ -24,9 +24,6 @@ echo "Build_kernel, is running. Logging Pi stats"
 # add Seconds variable
 start=$SECONDS
 
-# printf tab formatting
-#printf "%s\t%s\t%s\t%s\t%s\n" "Time(Sec)" "CPU Temp(degC)" "GPU Temp(degC)" "CPU Usage(%)" "Memory Usage(GB)" 
-#printf "%10s\n" "....................................................................................."
 
 
 # While loop for logging
@@ -39,7 +36,7 @@ cpu_temp=$((cpu_temp/1000))
 gpu_temp=$(vcgencmd measure_temp | grep -Eo '[0-9]*\.[0-9]*')
 
 # Get CPU usage
-cpu_usage=$[100-$(vmstat 1 2|tail -1|awk '{print $15}')]
+cpu_usage=$((100-$(vmstat 1 2|tail -1|awk '{print $15}')))
 
 # Get Memory usage, uses free command and extracts used column to display mem usage
 mem_usage=$(free -m | grep ^Mem | tr -s ' '| cut -d ' ' -f 3)
@@ -49,10 +46,9 @@ mem_usage=$((mem_usage/100))
 
 # Renaming long command to "time". "%s" adjusts time to epoch
 duration=$(( SECONDS - start))
-#printf "%s\t\t%s\t\t%s\t\t%s\t\t%.2f\n" "$duration" "$cpu_temp" "$gpu_temp" "$cpu_usage" "$mem_usage" 
 
 # Saves data produced to kernel_data.dat
-printf "%s\t\t%s\t\t%s\t\t%s\t\t%.2f\n" "$duration" "$cpu_temp" "$gpu_temp" "$cpu_usage" "$mem_usage" >> "$OUTPUT_FILE"
+printf "%s\\t\\t%s\\t\\t%s\\t\\t%s\\t\\t%.2f\\n" "$duration" "$cpu_temp" "$gpu_temp" "$cpu_usage" "$mem_usage" >> "$OUTPUT_FILE"
 $SLEEP $CPU_MEASURE_INTERVAL_SECONDS 
 
 done

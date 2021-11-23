@@ -1,0 +1,164 @@
+commit 7e0df76ffc0d5bcde9e3ce3c10f387030bc33c6a
+Author: s3666906 <s3666906@student.rmit.edu.au>
+Date:   Tue Nov 23 22:10:26 2021 +0100
+
+    Update report.md
+    
+    - Graphs added to report
+    - Report findings made and written
+
+commit 3fbfae37e680b2672183bd7f1375c33982d88287
+Author: s3666906 <s3666906@student.rmit.edu.au>
+Date:   Tue Nov 23 14:02:51 2021 +0100
+
+    Create report.md
+
+commit f426a8d6ad809d6d717973473f0c58e5d7e0c033
+Merge: f7d8832 50ff63e
+Author: s3666906 <s3666906@student.rmit.edu.au>
+Date:   Tue Nov 23 13:43:22 2021 +0100
+
+    Merge pull request #4 from s3666906/build_kernel
+    
+    Build kernel
+
+commit 50ff63ecac7fc240407dd0c833769d65a9955e16
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Tue Nov 23 13:41:14 2021 +0100
+
+    build_kernel modified
+
+commit f7d8832ba95b61b5d0b7827c337945991ba0c904
+Merge: 80886e6 af434e5
+Author: s3666906 <s3666906@student.rmit.edu.au>
+Date:   Tue Nov 23 13:39:18 2021 +0100
+
+    Merge pull request #3 from s3666906/led_flicker
+    
+    Led flicker
+
+commit 80886e63335e144414a03b6b27b0ba2a06d24744
+Merge: dc7732c 034ed4a
+Author: s3666906 <s3666906@student.rmit.edu.au>
+Date:   Tue Nov 23 13:35:37 2021 +0100
+
+    Merge pull request #2 from s3666906/graphplot
+    
+    Graphplot
+
+commit 034ed4a758736d345dbdf44c81ba31e86ac132ae
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Tue Nov 23 13:34:26 2021 +0100
+
+    graphs plotted
+
+commit efddc0964e858626129912014d2ca79caaefd7d1
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Tue Nov 23 12:12:33 2021 +0100
+
+    vcgencmd script modified
+
+commit 40706daebaa94440ef8a6fa579eb6489e3a6d673
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Tue Nov 23 12:00:24 2021 +0100
+
+    changes made to vcgencmd to save data to file
+
+commit dc7732ccbcc6ccae745ca71d957a8a9643996eff
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Tue Nov 23 10:03:45 2021 +0100
+
+    README.md modified
+
+commit 5b2e8b2cc7083403554e7fbf697af78329cc00e4
+Merge: 0c38a1a 9bea3a0
+Author: s3666906 <s3666906@student.rmit.edu.au>
+Date:   Tue Nov 23 09:46:10 2021 +0100
+
+    Merge pull request #1 from s3666906/temp_monitor
+    
+    Temp monitor merged to main, feature is fully functional
+
+commit 9bea3a0121d232eaf0fcc335a02725670f4c5d6c
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Tue Nov 23 09:44:11 2021 +0100
+
+    vcgencmd script modified
+
+commit fd8e324311dc370b9f8e436324c650d016f6ad6b
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Tue Nov 23 09:37:43 2021 +0100
+
+    vcgencmd script modified and tested
+
+commit af434e58ad25f76157b6cdafe02069fcfafab846
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Mon Nov 22 23:10:01 2021 +0100
+
+    led_flicker modified and being tested
+
+commit a5adefd9f13f80c492d2a5a177c59c0518d77abd
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Mon Nov 22 22:45:35 2021 +0100
+
+    vcgencmd file script modified and tested
+
+commit 0e8678a0e416106a3f0b57cd0903136ee80651a4
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Mon Nov 22 12:38:49 2021 +0100
+
+    script changes made to build_kernel for functionality
+
+commit fca5f4a5d9e8c41cebb20753de73090f75283a17
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Mon Nov 22 11:58:29 2021 +0100
+
+    script changes made to vcgencmd for functionality
+
+commit 8bd660b8d081354dfa4a30e90f1d72a4e42416ff
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Sun Nov 21 21:04:12 2021 +0100
+
+    file changes made to vcgencmd
+
+commit 191108cf8c2f5c271cd220889fea72267f5e39f4
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Sun Nov 21 21:02:41 2021 +0100
+
+    temp_monitor renamed to command name to reduce confusion
+
+commit 8aaa99fee8f6085caf3bacb2ce91b0b0a70de2eb
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Sun Nov 21 20:58:48 2021 +0100
+
+    temp_monitor branch and file created
+
+commit 95caf6dbb370560dc15524beb45b737d7202376d
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Sun Nov 21 19:04:53 2021 +0100
+
+    Added new file for led flicker
+
+commit 93e681db9bbb65dac4bc93c861adb9d3abae450c
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Fri Nov 19 11:34:35 2021 +0100
+
+     commiting file name corrections and adding author
+
+commit 962c33cb8d0115d3c8887217152bdc7f58f4467f
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Thu Nov 18 22:31:00 2021 +0100
+
+    kernel branch created and kernel file created
+
+commit 0c38a1af9c64e34c33fd53e7b075a4098828903b
+Author: Miroslav Petkovic <s3666906@student.rmit.edu.au>
+Date:   Thu Nov 18 21:31:57 2021 +0100
+
+    Initial commit
+
+commit 6ebf0a8a35f088c709717238d6fa1db49dc534b9
+Author: s3666906 <31560703+s3666906@users.noreply.github.com>
+Date:   Thu Nov 18 21:13:37 2021 +0100
+
+    Initial commit
