@@ -45,6 +45,8 @@ done
 
 # elinux.org. 2019. "RPI vcgencmd usage". <https://elinux.org/RPI_vcgencmd_usage>. [Accessed 20 November 2021].
 
+# Stack Exchange Inc (User "Jeulis"). 2018. "Extracting %CPU usage from VMSTAT in a file". [online] Available at: <https://stackoverflow.com/questions/26906828/extracting-cpu-usage-from-vmstat-in-a-file> [Accessed 21 November 2021].
+
 # Unix & Linux Stack Exchange (User: 0x80). 2013. "Get separate used memory info from free -m command". [online] Available at: <https://unix.stackexchange.com/questions/68526/get-separate-used-memory-info-from-free-m-command> [Accessed 20 November 2021].
 
 # Vivek Gite. 2021. "How to find out Raspberry Pi GPU and ARM CPU temperature on Linux". [online] Available at: <https://www.cyberciti.biz/faq/linux-find-out-raspberry-pi-gpu-and-arm-cpu-temperature-command/ [Accessed 20 November 2021].
