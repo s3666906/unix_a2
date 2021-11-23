@@ -5,15 +5,29 @@
 # Pi Version : 4
 # Builds vcgencmd Script for performance monitoring
 
+OUTPUT_FILE=kernel_data.dat
+CPU_MEASURE_INTERVAL_SECONDS=1
+SLEEP=/bin/sleep
+
+# Checks and deletes OUTPUT_FILE if already exists before process starts
+if [ $# -eq 1 ] ; then
+	OUTPUT_FILE=$1
+fi
+
+if [[ -e $OUTPUT_FILE ]] ; then
+	rm -f "$OUTPUT_FILE"
+fi
+
 # Temperature Script for cpu during build_kernel operation
-echo "Build_kernel, is running. Logging CPU temperature"
+echo "Build_kernel, is running. Logging Pi stats"
 
 # add Seconds variable
 start=$SECONDS
 
 # printf tab formatting
-printf "%s\t%s\t%s\t%s\t%s\n" "Time(Sec)" "CPU Temp(degC)" "GPU Temp(degC)" "CPU Usage(%)" "Memory Usage(GB)" 
-printf "%10s\n" "....................................................................................."
+#printf "%s\t%s\t%s\t%s\t%s\n" "Time(Sec)" "CPU Temp(degC)" "GPU Temp(degC)" "CPU Usage(%)" "Memory Usage(GB)" 
+#printf "%10s\n" "....................................................................................."
+
 
 # While loop for logging
 while true
@@ -29,15 +43,20 @@ cpu_usage=$[100-$(vmstat 1 2|tail -1|awk '{print $15}')]
 
 # Get Memory usage, uses free command and extracts used column to display mem usage
 mem_usage=$(free -m | grep ^Mem | tr -s ' '| cut -d ' ' -f 3)
+# turns mem_usage into GB
 mem_usage=$((mem_usage/100))
 
 
 # Renaming long command to "time". "%s" adjusts time to epoch
 duration=$(( SECONDS - start))
-printf "%s\t\t%s\t\t%s\t\t%s\t\t%.2f\n" "$duration" "$cpu_temp" "$gpu_temp" "$cpu_usage" "$mem_usage"
-sleep 1
+#printf "%s\t\t%s\t\t%s\t\t%s\t\t%.2f\n" "$duration" "$cpu_temp" "$gpu_temp" "$cpu_usage" "$mem_usage" 
+
+# Saves data produced to kernel_data.dat
+printf "%s\t\t%s\t\t%s\t\t%s\t\t%.2f\n" "$duration" "$cpu_temp" "$gpu_temp" "$cpu_usage" "$mem_usage" >> "$OUTPUT_FILE"
+$SLEEP $CPU_MEASURE_INTERVAL_SECONDS 
 
 done
+
 
 ### References
 
