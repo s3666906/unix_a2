@@ -8,4 +8,4 @@ The time to compile the kernel may vary depending on the specs of Pi you have, i
 
 In this compilation, LED control is attempted but not tested
 
-Script checked with shellcheck and all pass
+Scripts checked with shellcheck and all pass check
