@@ -62,5 +62,8 @@ sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 kill -15 $tempPID
 kill -15 $ledPID
 
+# Run gnuplot to produce data before Pi reboot
+./gnuplot
+
 # Reboots sytem to enable changes
 sudo reboot

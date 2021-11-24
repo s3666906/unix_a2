@@ -48,7 +48,7 @@ mem_usage=$((mem_usage/100))
 duration=$(( SECONDS - start))
 
 # Saves data produced to kernel_data.dat
-printf "%s\\t\\t%s\\t\\t%s\\t\\t%s\\t\\t%.2f\\n" "$duration" "$cpu_temp" "$gpu_temp" "$cpu_usage" "$mem_usage" >> "$OUTPUT_FILE"
+printf "%s\\t\\t%s\\t\\t%.0f\\t\\t%s\\t\\t%.2f\\n" "$duration" "$cpu_temp" "$gpu_temp" "$cpu_usage" "$mem_usage" >> "$OUTPUT_FILE"
 $SLEEP $CPU_MEASURE_INTERVAL_SECONDS 
 
 done
